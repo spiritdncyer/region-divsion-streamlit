@@ -2,53 +2,50 @@ altair==4.1.0
 argon2-cffi==21.1.0
 astor==0.8.1
 attrs==21.2.0
-backcall @ file:///home/ktietz/src/ci/backcall_1611930011877/work
+backcall==0.2.0
 base58==2.1.0
 bleach==4.1.0
 blinker==1.4
-Bottleneck @ file:///C:/ci/bottleneck_1607557040328/work
+Bottleneck==1.3.2
 cachetools==4.2.2
 certifi==2021.5.30
 cffi==1.14.6
-chardet @ file:///C:/ci/chardet_1607706937985/work
+chardet==4.0.0
 charset-normalizer==2.0.4
 click==7.1.2
 click-plugins==1.1.1
 cligj==0.7.2
-colorama @ file:///tmp/build/80754af9/colorama_1607707115595/work
+colorama==0.4.4
 cycler==0.10.0
-debugpy @ file:///C:/ci/debugpy_1629222819322/work
-decorator @ file:///tmp/build/80754af9/decorator_1621259047763/work
+debugpy==1.4.1
+decorator==5.0.9
 defusedxml==0.7.1
 entrypoints==0.3
 et-xmlfile==1.1.0
-Fiona @ file:///C:/Users/cyj/Development/python-Sublime/%E5%9C%B0%E7%90%86%E5%8C%96/%E5%AE%89%E8%A3%85%E5%8C%85/py39_win64/Fiona-1.8.20-cp39-cp39-win_amd64.whl
 fonttools==4.25.0
 fuzzywuzzy==0.18.0
-GDAL @ file:///C:/Users/cyj/Development/python-Sublime/%E5%9C%B0%E7%90%86%E5%8C%96/%E5%AE%89%E8%A3%85%E5%8C%85/py39_win64/GDAL-3.3.1-cp39-cp39-win_amd64.whl
-geopandas==0.9.0
 gitdb==4.0.7
 GitPython==3.1.20
 idna==3.2
 ipykernel==6.3.1
 ipython==7.27.0
-ipython-genutils @ file:///tmp/build/80754af9/ipython_genutils_1606773439826/work
+ipython-genutils==0.2.0
 ipywidgets==7.6.4
 jdcal==1.4.1
-jedi @ file:///C:/ci/jedi_1611341083684/work
+jedi==0.18.0
 Jinja2==3.0.1
 jsonschema==3.2.0
 jupyter-client==7.0.2
-jupyter-core @ file:///C:/ci/jupyter_core_1612213515523/work
+jupyter-core==4.7.1
 jupyterlab-pygments==0.1.2
 jupyterlab-widgets==1.0.1
-kiwisolver @ file:///C:/ci/kiwisolver_1612282555033/work
+kiwisolver==1.3.1
 MarkupSafe==2.0.1
-matplotlib @ file:///C:/ci/matplotlib-suite_1628011511716/work
-matplotlib-inline @ file:///tmp/build/80754af9/matplotlib-inline_1628242447089/work
+matplotlib==3.4.2
+matplotlib-inline==0.1.2
 mistune==0.8.4
 mkl-fft==1.3.0
-mkl-random @ file:///C:/ci/mkl_random_1626186184308/work
+mkl-random==1.2.2
 mkl-service==2.4.0
 munch==2.5.0
 munkres==1.1.4
@@ -57,44 +54,43 @@ nbconvert==6.1.0
 nbformat==5.1.3
 nest-asyncio==1.5.1
 notebook==6.4.3
-numexpr @ file:///C:/ci/numexpr_1618856728739/work
-numpy @ file:///C:/ci/numpy_and_numpy_base_1626271900803/work
+numexpr==2.7.3
+numpy==1.20.3
 olefile==0.46
-openpyxl @ file:///tmp/build/80754af9/openpyxl_1615411699337/work
+openpyxl==3.0.7
 packaging==21.0
-pandas @ file:///C:/ci/pandas_1629682571109/work
+pandas==1.3.2
 pandocfilters==1.4.3
-parso @ file:///tmp/build/80754af9/parso_1617223946239/work
-pickleshare @ file:///tmp/build/80754af9/pickleshare_1606932040724/work
-Pillow @ file:///C:/ci/pillow_1625663294916/work
+parso==0.8.2
+pickleshare==0.7.5
+Pillow==8.3.1
+pip==21.2.4
 prometheus-client==0.11.0
 prompt-toolkit==3.0.20
 protobuf==3.17.3
 pyarrow==5.0.0
 pycparser==2.20
 pydeck==0.7.0
-Pygments @ file:///tmp/build/80754af9/pygments_1629234116488/work
-pyparsing @ file:///home/linux1/recipes/ci/pyparsing_1610983426697/work
-pyproj @ file:///C:/Users/cyj/Development/python-Sublime/%E5%9C%B0%E7%90%86%E5%8C%96/%E5%AE%89%E8%A3%85%E5%8C%85/py39_win64/pyproj-3.1.0-cp39-cp39-win_amd64.whl
+Pygments==2.10.0
+pyparsing==2.4.7
 pyrsistent==0.18.0
-python-dateutil @ file:///tmp/build/80754af9/python-dateutil_1626374649649/work
-pytz @ file:///tmp/build/80754af9/pytz_1612215392582/work
+python-dateutil==2.8.2
+pytz==2021.1
 pywin32==301
 pywinpty==1.1.3
-pyzmq @ file:///C:/ci/pyzmq_1628276105793/work
+pyzmq==22.2.1
 requests==2.26.0
-Rtree @ file:///C:/Users/cyj/Development/python/%E5%9C%B0%E7%90%86%E5%8C%96/%E5%AE%89%E8%A3%85%E5%8C%85/py39_win64/Rtree-0.9.7-cp39-cp39-win_amd64.whl
 Send2Trash==1.8.0
-Shapely @ file:///C:/Users/cyj/Development/python-Sublime/%E5%9C%B0%E7%90%86%E5%8C%96/%E5%AE%89%E8%A3%85%E5%8C%85/py39_win64/Shapely-1.7.1-cp39-cp39-win_amd64.whl
+setuptools==52.0.0.post20210125
 sip==4.19.13
-six @ file:///tmp/build/80754af9/six_1623709665295/work
+six==1.16.0
 smmap==4.0.0
 streamlit==0.87.0
 terminado==0.11.1
 testpath==0.5.0
 toml==0.10.2
 toolz==0.11.1
-tornado @ file:///C:/ci/tornado_1606924294691/work
+tornado==6.1
 traitlets==5.1.0
 typing-extensions==3.10.0.2
 tzdata==2021.1
@@ -102,7 +98,14 @@ tzlocal==3.0
 urllib3==1.26.6
 validators==0.18.2
 watchdog==2.1.5
-wcwidth @ file:///tmp/build/80754af9/wcwidth_1593447189090/work
+wcwidth==0.2.5
 webencodings==0.5.1
+wheel==0.37.0
 widgetsnbextension==3.5.1
 wincertstore==0.2
+https://download.lfd.uci.edu/pythonlibs/y2rycu7g/GDAL-3.3.1-cp39-cp39-win_amd64.whl
+https://download.lfd.uci.edu/pythonlibs/y2rycu7g/Fiona-1.8.20-cp39-cp39-win_amd64.whl
+https://download.lfd.uci.edu/pythonlibs/y2rycu7g/Shapely-1.7.1-cp39-cp39-win_amd64.whl
+https://download.lfd.uci.edu/pythonlibs/y2rycu7g/pyproj-3.1.0-cp39-cp39-win_amd64.whl
+https://download.lfd.uci.edu/pythonlibs/y2rycu7g/Rtree-0.9.7-cp39-cp39-win_amd64.whl
+geopandas==0.9.0
