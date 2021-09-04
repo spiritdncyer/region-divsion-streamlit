@@ -90,14 +90,14 @@ def read_df(file):
 
 def layer_check(geofolder, key_list=None):
     try:
-        dictionary = dict(pd.read_csv(f'.\\{geofolder}\\图层信息.csv', encoding='gb18030').loc[:, ['字段名称', '图层名称']].values)
+        dictionary = dict(pd.read_csv(f'.//{geofolder}//图层信息.csv', encoding='gb18030').loc[:, ['字段名称', '图层名称']].values)
         if (key_list is None) or (~set(key_list).issubset(dictionary.keys())):
             key_list = dictionary.keys()
         else:
             pass
         file_extension = 'shp' if geofolder == 'mapinfo' else 'gpkg'
         for index, name in enumerate(key_list):
-            col_nm = list(gpd.read_file(f'.\\{geofolder}\\{dictionary[name]}.{file_extension}', encoding='utf-8'))
+            col_nm = list(gpd.read_file(f'.//{geofolder}//{dictionary[name]}.{file_extension}', encoding='utf-8'))
             if name not in col_nm:
                 raise ValueError(f'图层字段<{name}>不在图层<{dictionary[name]}.{file_extension}>中')
         return dictionary
@@ -117,7 +117,7 @@ def region_division(df, region_dictionary, region_name, geofolder='qgis', lanlot
     file_extension = 'shp' if geofolder == 'mapinfo' else 'gpkg'
     df_dropdu = df.drop_duplicates(subset=lanlot_cols).reset_index(drop=True)
     for index, name in enumerate(region_name):
-        gdf_region = gpd.read_file(f'.\\{geofolder}\\{region_dictionary[name]}.{file_extension}', encoding='utf-8')
+        gdf_region = gpd.read_file(f'.//{geofolder}//{region_dictionary[name]}.{file_extension}', encoding='utf-8')
         gdf_region = gdf_region.to_crs('EPSG:2381') if gdf_region.crs is None else gdf_region.to_crs('EPSG:2381')
         lanlot = gpd.GeoSeries([Point(x, y) for x, y in zip(df_dropdu[lanlot_cols[0]], df_dropdu[lanlot_cols[1]])])
         lanlot_region = gpd.sjoin(lanlot.reset_index().rename(columns={0: 'geometry'}).set_crs('epsg:4326').to_crs('EPSG:2381'),
@@ -146,7 +146,7 @@ if file_obj:
         "图层选择",
         region_dict.keys()
     )
-    geo_df = gpd.read_file(f'.\\qgis\\{region_dict[table_name]}.gpkg', encoding='utf-8')
+    geo_df = gpd.read_file(f'.//qgis//{region_dict[table_name]}.gpkg', encoding='utf-8')
     fig, ax = plt.subplots()
     ax = geo_df.plot(ax=ax, column=table_name, cmap='Spectral')
     st.pyplot(fig)
@@ -162,4 +162,3 @@ if file_obj:
         st.header('4、结果下载')
         file_path, file_label = f'区域划分结果-{table_name}.csv', '区域划分结果'
         st.markdown(get_binary_file_downloader_html(file_path, file_label), unsafe_allow_html=True)
-
