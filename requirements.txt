@@ -6,3 +6,4 @@ requests==2.26.0
 streamlit==0.87.0
 matplotlib==3.4.2
 git+git://github.com/geopandas/geopandas.git
+rtree==0.9.7
