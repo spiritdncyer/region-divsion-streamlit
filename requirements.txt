@@ -103,9 +103,9 @@ webencodings==0.5.1
 wheel==0.37.0
 widgetsnbextension==3.5.1
 wincertstore==0.2
-https://download.lfd.uci.edu/pythonlibs/y2rycu7g/GDAL-3.3.1-cp39-cp39-win_amd64.whl
-https://download.lfd.uci.edu/pythonlibs/y2rycu7g/Fiona-1.8.20-cp39-cp39-win_amd64.whl
-https://download.lfd.uci.edu/pythonlibs/y2rycu7g/Shapely-1.7.1-cp39-cp39-win_amd64.whl
-https://download.lfd.uci.edu/pythonlibs/y2rycu7g/pyproj-3.1.0-cp39-cp39-win_amd64.whl
-https://download.lfd.uci.edu/pythonlibs/y2rycu7g/Rtree-0.9.7-cp39-cp39-win_amd64.whl
+gdal==3.3.1
+fiona==1.8.20
+Shapely==1.7.1
+pyproj==3.1.0
+rtree==0.9.7
 geopandas==0.9.0
