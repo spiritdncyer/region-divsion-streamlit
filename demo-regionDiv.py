@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import streamlit as st
 import time
 import re
@@ -53,8 +54,8 @@ def read_layer_and_check(geofolder):
 
 def layer_selector(region_dictionary):
     st.header('1、图层展示')
-    with st.sidebar.form(key='selector'):
-        st.header('图层信息选择')
+    with st.form(key='selector'):
+        # st.subheader('图层信息选择')
         region_name = st.multiselect(
             "请选择图层",
             region_dictionary.keys(),
@@ -105,7 +106,7 @@ def layer_ploting(region_dictionary, region_name, fig_cols):
 def input_mode_selector():
     st.header('2、数据选择')
     st.sidebar.header('输入模式选择')
-    return st.sidebar.radio('请选择输入方式', ('文本输入', '文件导入'))
+    return st.sidebar.radio('请选择输入方式', ('文件导入', '文本输入'))
 
 
 def run_manual_input(region_dictionary, region_name):
@@ -376,7 +377,9 @@ def reslut_summary(df, region_name):
 
 @st.cache(suppress_st_warning=True, allow_output_mutation=True)
 def summary_ploting(summary, rail_data):
+    plt.rcParams['font.family'] = 'sans-serif'
     plt.rcParams['font.sans-serif'] = ['Microsoft YaHei']
+    plt.rcParams['axes.unicode_minus'] = False
     fig_list = []
     region_name = list(summary.keys())
     num_name = len(region_name)
