@@ -106,7 +106,11 @@ def layer_ploting(region_dictionary, region_name, fig_cols):
 def input_mode_selector():
     st.header('2、数据选择')
     st.sidebar.header('输入模式选择')
-    return st.sidebar.radio('请选择输入方式', ('文件导入', '文本输入'))
+    return st.sidebar.radio(
+        '请选择输入方式',
+        ('文件导入', '文本输入'),
+        help='首次执行请先在图层选择处点击确认。'
+    )
 
 
 def run_manual_input(region_dictionary, region_name):
