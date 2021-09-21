@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import streamlit as st
 import time
 import re
@@ -87,7 +86,7 @@ def layer_ploting(region_dictionary, region_name, fig_cols):
             ax_i.set_xlim(119.1, 120.3)
             ax_i.set_ylim(31.1, 32.1)
             geo_df.plot(ax=ax_i, column=field_name, cmap='Spectral')
-        #去掉坐标轴
+        # 去掉坐标轴
         mod_num = num_fig % fig_cols
         if mod_num != 0:
             if nrows == 1:
@@ -99,7 +98,7 @@ def layer_ploting(region_dictionary, region_name, fig_cols):
     else:
         fig, ax = plt.subplots()
         ax.axis('off')
-    st.write("Cache miss: layer_ploting")
+    # st.write("Cache miss: layer_ploting")
     return fig
 
 
@@ -255,7 +254,8 @@ def clean_lotlan(df_cell):
         for col_name in list(df_cell_split.loc[:, ['经度', '纬度']]):
             df_comb = pd.concat([df_comb, (df_cell_split[col_name].str.split('/', expand=True)
                                            .stack().reset_index(level=1).rename(columns={0: col_name}))], axis=1)
-        df_cell = pd.concat([df_cell[~df_cell_split_list], df_cell_split.iloc[:, :3].join(df_comb.drop(['level_1'], axis=1))]).reset_index(drop=True)
+        df_cell = pd.concat([df_cell[~df_cell_split_list],
+                             df_cell_split.iloc[:, :3].join(df_comb.drop(['level_1'], axis=1))]).reset_index(drop=True)
     return df_cell
 
 
@@ -283,7 +283,7 @@ def read_df(file):
         df = pd_read(file, f_ext)
     else:
         st.error('文件格式错误')
-    st.write("Cache miss:read_df")
+    # st.write("Cache miss:read_df")
     return df
 
 
@@ -316,12 +316,12 @@ def region_division(df, region_dictionary, region_name):
         gdf_region = region_dictionary[name][1]
         gdf_region = gdf_region.to_crs('EPSG:2381') if gdf_region.crs is None else gdf_region.to_crs('EPSG:2381')
         lanlot = gpd.GeoSeries([Point(x, y) for x, y in zip(df_dropdu[lanlot_cols[0]], df_dropdu[lanlot_cols[1]])])
-        lanlot_region = gpd.sjoin(lanlot.reset_index().rename(columns={0: 'geometry'}).set_crs('epsg:4326').to_crs('EPSG:2381'),
-                                  gdf_region.loc[:, [name, 'geometry']])
+        lanlot_region = gpd.sjoin(lanlot.reset_index().rename(columns={0: 'geometry'})
+                                  .set_crs('epsg:4326').to_crs('EPSG:2381'), gdf_region.loc[:, [name, 'geometry']])
         df_dropdu = df_dropdu.join(lanlot_region.set_index('index').loc[:, name])
         my_bar.progress((index + 1) / len(region_name))
     df = df.merge(df_dropdu.loc[:, lanlot_cols + region_name], how='left', on=lanlot_cols)
-    st.write("Cache miss: region_division")
+    # st.write("Cache miss: region_division")
     run_counter()
     return df
 
@@ -343,7 +343,6 @@ def output_summary(summary):
     for key in summary.keys():
         df_summary = pd.concat([df_summary, summary[key]], axis=1)
     return df_summary.to_csv(index=False).encode('utf-8-sig')
-
 
 
 @st.cache(suppress_st_warning=True)
@@ -375,14 +374,14 @@ def reslut_summary(df, region_name):
                          .assign(temp=lambda x: x[name].astype('category').cat.set_categories(region_order_dict[name]))
                          .sort_values(by=['temp'], ignore_index=True).drop('temp', axis=1))
     rail_data = summary.pop('高铁周边') if summary.get('高铁周边') is not None else None
-    st.write("Cache miss: reslut_summary")
+    # st.write("Cache miss: reslut_summary")
     return summary, rail_data
 
 
 @st.cache(suppress_st_warning=True, allow_output_mutation=True)
 def summary_ploting(summary, rail_data):
     plt.rcParams['font.family'] = 'sans-serif'
-    plt.rcParams['font.sans-serif'] = ['Microsoft YaHei']
+    plt.rcParams['font.sans-serif'] = ['SimHei']
     plt.rcParams['axes.unicode_minus'] = False
     fig_list = []
     region_name = list(summary.keys())
@@ -417,15 +416,18 @@ def summary_ploting(summary, rail_data):
                     outer_colors = cmap(tab20c_color_array(num_label_2, 'outer'))
                     inner_colors = cmap(tab20c_color_array(num_label_1, 'inner'))
 
-                wedges1, texts1, autotexts1 = ax_i.pie(inner_vals, radius=1 - size, labels=inner_labels, colors=inner_colors,
-                                                                 autopct=lambda pct: pct_func(pct, inner_vals), pctdistance=0.75,
-                                                                 labeldistance=0.3, startangle=90, wedgeprops=dict(width=size, edgecolor='w'))
-
-                wedges2, texts2, autotexts2 = ax_i.pie(outer_vals, radius=1, labels=outer_labels, colors=outer_colors,
-                                                                 autopct=lambda pct: pct_func(pct, outer_vals), pctdistance=0.85,
-                                                                 startangle=90, wedgeprops=dict(width=size, edgecolor='w'))
-                plt.setp(autotexts1, size=8, weight="bold", color="w")
-                plt.setp(autotexts2, size=8, weight="bold", color="w")
+                wedges1, texts1, autotexts1 = ax_i.pie(
+                    inner_vals, radius=1 - size, labels=inner_labels, colors=inner_colors,
+                    autopct=lambda pct: pct_func(pct, inner_vals), pctdistance=0.75, labeldistance=0.3,
+                    startangle=90, wedgeprops=dict(width=size, edgecolor='w')
+                )
+                wedges2, texts2, autotexts2 = ax_i.pie(
+                    outer_vals, radius=1, labels=outer_labels, colors=outer_colors,
+                    autopct=lambda pct: pct_func(pct, outer_vals), pctdistance=0.85,
+                    startangle=90, wedgeprops=dict(width=size, edgecolor='w')
+                )
+                plt.setp(autotexts1, size=10, weight="bold", color="w")
+                plt.setp(autotexts2, size=10, weight="bold", color="w")
                 plt.setp(texts1, size=10, color="k")
                 plt.setp(texts2, size=10, color="k")
                 ax_i.set(aspect="equal")
@@ -436,8 +438,8 @@ def summary_ploting(summary, rail_data):
                 cmap = plt.get_cmap("tab20c")
                 outer_colors = cmap(tab20c_color_array(num_label_1, 'inner'))
                 wedges, texts, autotexts = ax_i.pie(vals_1, radius=1, labels=labels_1, colors=outer_colors,
-                                                              autopct=lambda pct: pct_func(pct, vals_1), startangle=90)
-                plt.setp(autotexts, size=8, weight="bold", color="w")
+                                                    autopct=lambda pct: pct_func(pct, vals_1), startangle=90)
+                plt.setp(autotexts, size=10, weight="bold", color="w")
                 plt.setp(texts, size=10, weight="bold", color="k")
                 ax_i.set(aspect="equal")
         plt.axis('off')
@@ -472,7 +474,7 @@ def summary_ploting(summary, rail_data):
             wedges2, texts2, autotexts2 = ax2.pie(detail_val, radius=r2, labels=detail_label, colors=detail_colors,
                                                   autopct=lambda pct: pct_func(pct, detail_val),
                                                   startangle=90, counterclock=False)
-            plt.setp(autotexts2, size=8, weight="bold", color="w")
+            plt.setp(autotexts2, size=10, weight="bold", color="w")
             plt.setp(texts2, size=10, color="k")
 
             # 饼图边缘的数据
@@ -498,7 +500,7 @@ def summary_ploting(summary, rail_data):
             fig_list.append(fig)
     else:
         pass
-    st.write("Cache miss: summary_ploting")
+    # st.write("Cache miss: summary_ploting")
     return fig_list
 
 
@@ -522,6 +524,7 @@ def tab20c_color_array(num_label, outer_or_inner):
             else:
                 array = np.append(array, np.arange(5) * 4 + i + 2)
     return np.sort(array)
+
 
 if __name__ == "__main__":
     main()
